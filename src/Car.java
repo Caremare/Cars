@@ -11,17 +11,31 @@ public class Car {
     int currentFuel;
     int consumption; //consumption per distance unit (km)
     int mileage = 0;
+    
+    int maxPassengers;
+    int currentPassengers;
 
     public Car() {
         this.model = "default";
         this.maxFuel = 100;
         this.consumption = 5;
+        this.mileage = 1000;
+        this.maxPassengers = 5;
+        this.currentPassengers = 1;
     }
 
     public Car(String customModel, int customMaxFuel, int customConsumption) {
         this.model = customModel;
         this.maxFuel = customMaxFuel;
         this.consumption = customConsumption;
+    }
+    
+    public Car(String customModel, int customMaxFuel, int customConsumption, int maxPass, int currPass) {
+        this.model = customModel;
+        this.maxFuel = customMaxFuel;
+        this.consumption = customConsumption;
+        this.currentPassengers = currPass;
+        this.maxPassengers = maxPass;
     }
 
     public void printAttributes() {
@@ -32,6 +46,7 @@ public class Car {
         System.out.println("Trenutno stanje rezervoara: " + this.currentFuel);
         System.out.println("Tezina: " + this.weight);
         System.out.println("Ukupna predjena distanca: " + this.mileage);
+        System.out.println("Trenutni broj putnika je " + this.currentPassengers + " od maksimalnih " + this.maxPassengers);
         System.out.println();
     }
 
@@ -54,6 +69,42 @@ public class Car {
         this.currentFuel = this.maxFuel;
     }
 
+    public void getIn() {
+        if (this.currentPassengers < this.maxPassengers) {
+            this.currentPassengers ++;
+            System.out.println ("Someone got in. Current number of passengers: " + this.currentPassengers);
+        } else { 
+            System.out.println ("The car is full, there is no space.");
+        }
+    }
+    
+    public void getIn(int numberOfPassengers) {
+        if (this.currentPassengers <= numberOfPassengers) {
+            this.currentPassengers = this.currentPassengers + numberOfPassengers;
+            System.out.println ("Someone got in. Current number of passengers: " + this.currentPassengers);
+        } else { 
+            System.out.println ("There is no space for " + numberOfPassengers + "passengers.\n");
+        }
+    }
+    
+    public void getOut() {
+        if (this.currentPassengers > 0){
+            this.currentPassengers --;
+            System.out.println ("Someone got out. Current number of passengers: " + this.currentPassengers);
+        } else {
+            System.out.println ("There are no more passengers.");
+        }
+    }
+    
+    public void getOut(int numberOfPassengers) {
+        if (this.currentPassengers >= numberOfPassengers){
+            this.currentPassengers = this.currentPassengers - numberOfPassengers;
+            System.out.println ("Someone got out. Current number of passengers: " + this.currentPassengers);
+        } else {
+            System.out.println ("There are no " + numberOfPassengers + "in the car.");
+        }
+    }
+    
     public void travel(int distance) {
 
         //ako ima dovoljno goriva za put onda putuj (povecaj mileage, smanji trenutno gorivo)
@@ -65,7 +116,6 @@ public class Car {
             System.out.println("Nema dovoljno goriva za taj put.");
             System.out.println();
         }
-
     }
 
 }
