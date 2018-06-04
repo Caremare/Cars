@@ -1,15 +1,16 @@
 
 import loops.Loops;
 import person.Person;
+import person.Student;
 
 
 public class Main {
     
     public static void main(String[] args) {
         
-//        Car myCar = new Car();
+//        Car myCar = new Car(); //kreiramo objeat myCar
 //        //myCar.printAttributes();
-//        myCar.changeLicence("efg123");
+//        myCar.changeLicence("efg123"); //nad objektom myCar pozivamo metodu changeLicence
 //        myCar.changWeight(1500.00);
 //        double distance = myCar.maxDistance();
 //        myCar.printAttributes();
@@ -82,6 +83,12 @@ public class Main {
         osoba.setSurname("Dragovic");
         
         osoba.showData();
+        
+        Student studentPetar = new Student("Petar", "Petrovic", "324324");
+        studentPetar.showData();
+        
+        Student studentMarko = new Student("Marko", "Markovic", "636434", "OAS-123", 2);
+        studentMarko.showData();
         
     }
 }
