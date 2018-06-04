@@ -33,7 +33,7 @@ public class Person {
     }
     
     public void setSurname(String newSurname) {
-        this.name = newSurname;
+        this.surname = newSurname;
     }
     
     public String getJmbg() {
